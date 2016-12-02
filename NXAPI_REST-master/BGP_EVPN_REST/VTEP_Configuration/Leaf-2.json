@@ -1,0 +1,30 @@
+{
+  "topSystem": {
+    "children": [
+      {
+        "hmmEntity": {
+          "children": [
+            {
+              "hmmFwdInst": {
+                "attributes": {
+                  "amac": "CA:FE:CA:FE:CA:FE"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "nvoEp": {
+          "attributes": {
+            "adminSt": "enabled",
+            "descr": "VTEP-1",
+            "epId": "1",
+            "hostReach": "bgp",
+            "sourceInterface": "lo0"
+          }
+        }
+      }
+    ]
+  }
+}

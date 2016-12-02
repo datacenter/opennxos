@@ -1,0 +1,75 @@
+{
+  "topSystem": {
+    "children": [
+      {
+        "interfaceEntity": {
+          "children": [
+            {
+              "l3LbRtdIf": {
+                "attributes": {
+                  "id": "lo0"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "ospfEntity": {
+          "children": [
+            {
+              "ospfInternalIf": {
+                "attributes": {
+                  "advertiseSecondaries": "yes",
+                  "area": "0.0.0.1",
+                  "id": "eth1/2",
+                  "instance": "1",
+                  "instanceid": "0"
+                }
+              }
+            },
+            {
+              "ospfInternalIf": {
+                "attributes": {
+                  "advertiseSecondaries": "yes",
+                  "area": "0.0.0.1",
+                  "id": "eth1/1",
+                  "instance": "1",
+                  "instanceid": "0"
+                }
+              }
+            },
+            {
+              "ospfInternalIf": {
+                "attributes": {
+                  "advertiseSecondaries": "yes",
+                  "area": "0.0.0.1",
+                  "id": "lo0",
+                  "instance": "1",
+                  "instanceid": "0"
+                }
+              }
+            },
+            {
+              "ospfInst": {
+                "attributes": {
+                  "name": "1"
+                },
+                "children": [
+                  {
+                    "ospfDom": {
+                      "attributes": {
+                        "name": "default",
+                        "rtrId": "4.4.4.4"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

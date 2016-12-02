@@ -1,0 +1,117 @@
+{
+  "topSystem": {
+    "children": [
+      {
+        "ipv4Entity": {
+          "children": [
+            {
+              "ipv4Inst": {
+                "children": [
+                  {
+                    "ipv4Dom": {
+                      "attributes": {
+                        "name": "default"
+                      },
+                      "children": [
+                        {
+                          "ipv4If": {
+                            "attributes": {
+                              "id": "eth1/2"
+                            },
+                            "children": [
+                              {
+                                "ipv4Addr": {
+                                  "attributes": {
+                                    "addr": "10.10.10.7/31"
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "ipv4If": {
+                            "attributes": {
+                              "id": "eth1/1"
+                            },
+                            "children": [
+                              {
+                                "ipv4Addr": {
+                                  "attributes": {
+                                    "addr": "10.10.10.3/31"
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "ipv4If": {
+                            "attributes": {
+                              "id": "lo0"
+                            },
+                            "children": [
+                              {
+                                "ipv4Addr": {
+                                  "attributes": {
+                                    "addr": "4.4.4.4/32"
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "interfaceEntity": {
+          "children": [
+            {
+              "l3LbRtdIf": {
+                "attributes": {
+                  "id": "lo0"
+                }
+              }
+            },
+            {
+              "l1PhysIf": {
+                "attributes": {
+                  "adminSt": "up",
+                  "id": "eth1/2",
+                  "layer": "Layer3",
+                  "mtu": "9126",
+                  "userCfgdFlags": "admin_layer,admin_mtu,admin_state"
+                }
+              }
+            },
+            {
+              "l1PhysIf": {
+                "attributes": {
+                  "adminSt": "up",
+                  "id": "eth1/1",
+                  "layer": "Layer3",
+                  "mtu": "9126",
+                  "userCfgdFlags": "admin_layer,admin_mtu,admin_state"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "nvoEp": {
+          "attributes": {
+            "epId": "1"
+          }
+        }
+      }
+    ]
+  }
+}

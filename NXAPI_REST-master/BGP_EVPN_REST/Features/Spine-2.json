@@ -1,0 +1,47 @@
+{
+  "topSystem": {
+    "children": [
+      {
+        "fmEntity": {
+          "children": [
+            {
+              "fmNvo": {
+                "attributes": {
+                  "adminSt": "enabled"
+                }
+              }
+            },
+            {
+              "fmBgp": {
+                "attributes": {
+                  "adminSt": "enabled"
+                }
+              }
+            },
+            {
+              "fmVnSegment": {
+                "attributes": {
+                  "adminSt": "enabled"
+                }
+              }
+            },
+            {
+              "fmEvpn": {
+                "attributes": {
+                  "adminSt": "enabled"
+                }
+              }
+            },
+            {
+              "fmOspf": {
+                "attributes": {
+                  "adminSt": "enabled"
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,109 @@
+{
+  "topSystem": {
+    "children": [
+      {
+        "bgpEntity": {
+          "children": [
+            {
+              "bgpInst": {
+                "attributes": {
+                  "asn": "65001"
+                },
+                "children": [
+                  {
+                    "bgpDom": {
+                      "attributes": {
+                        "name": "default",
+                        "rtrId": "3.3.3.3"
+                      },
+                      "children": [
+                        {
+                          "bgpPeer": {
+                            "attributes": {
+                              "addr": "2.2.2.2",
+                              "asn": "65001",
+                              "inheritContPeerCtrl": "",
+                              "srcIf": "lo0"
+                            },
+                            "children": [
+                              {
+                                "bgpPeerAf": {
+                                  "attributes": {
+                                    "inheritContPeerPolicyCtrl": "",
+                                    "sendComExt": "enabled",
+                                    "sendComStd": "enabled",
+                                    "type": "l2vpn-evpn"
+                                  }
+                                }
+                              },
+                              {
+                                "bgpPeerAf": {
+                                  "attributes": {
+                                    "inheritContPeerPolicyCtrl": "",
+                                    "sendComExt": "enabled",
+                                    "sendComStd": "enabled",
+                                    "type": "ipv4-ucast"
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "bgpPeer": {
+                            "attributes": {
+                              "addr": "1.1.1.1",
+                              "asn": "65001",
+                              "inheritContPeerCtrl": "",
+                              "srcIf": "lo0"
+                            },
+                            "children": [
+                              {
+                                "bgpPeerAf": {
+                                  "attributes": {
+                                    "inheritContPeerPolicyCtrl": "",
+                                    "sendComExt": "enabled",
+                                    "sendComStd": "enabled",
+                                    "type": "l2vpn-evpn"
+                                  }
+                                }
+                              },
+                              {
+                                "bgpPeerAf": {
+                                  "attributes": {
+                                    "inheritContPeerPolicyCtrl": "",
+                                    "sendComExt": "enabled",
+                                    "sendComStd": "enabled",
+                                    "type": "ipv4-ucast"
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "bgpDomAf": {
+                            "attributes": {
+                              "type": "ipv4-ucast"
+                            }
+                          }
+                        },
+                        {
+                          "bgpDomAf": {
+                            "attributes": {
+                              "type": "l2vpn-evpn"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
