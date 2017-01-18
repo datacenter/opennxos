@@ -1,0 +1,45 @@
+root@leaf_1#puppet agent -t
+Info: Using configured environment 'production'
+Info: Retrieving pluginfacts
+Info: Retrieving plugin
+Info: Loading facts
+Info: Caching catalog for leaf_1
+Info: Applying configuration version '1484564513'
+Notice: /Stage[main]/Evpn_vxlan::Enable_features::Leaf/Cisco_command_config[Enable_req_features_for_configuration_on_leaf_switch]/command: command changed '' to 'feature pim
+feature bgp
+feature ospf
+nv overlay evpn
+feature interface-vlan
+feature fabric forwarding
+feature vn-segment-vlan-based
+feature nv overlay
+feature vpc
+feature lacp
+'
+
+
+Notice: /Stage[main]/Evpn_vxlan::Vpc_domain/Cisco_vpc_domain[10]/ensure: created
+
+
+Notice: /Stage[main]/Evpn_vxlan::Host_or_server_facing_interface/Cisco_interface[Ethernet1/12]/description: description changed '' to 'description Connected to server3'
+Notice: /Stage[main]/Evpn_vxlan::Host_or_server_facing_interface/Cisco_interface[Ethernet1/12]/switchport_mode: switchport_mode changed 'access' to 'trunk'
+Notice: /Stage[main]/Evpn_vxlan::Host_or_server_facing_interface/Cisco_interface[Ethernet1/12]/switchport_trunk_allowed_vlan: switchport_trunk_allowed_vlan changed '1-4094' to '1001'
+Notice: /Stage[main]/Evpn_vxlan::Host_or_server_facing_interface/Cisco_interface[Ethernet1/12]/switchport_trunk_native_vlan: switchport_trunk_native_vlan changed '1' to '10'
+Notice: /Stage[main]/Evpn_vxlan::Peer_backup_svi/Cisco_command_config[setting_ip_igmp]/command: command changed '' to 'interface vlan160
+ip igmp static-oif route-map match-mcast-groups
+'
+Notice: /Stage[main]/Evpn_vxlan::L2vni/Evpn_vxlan::L2vni_resource[Configure l2vni]/Cisco_vlan[1001]/ensure: created
+Notice: /Stage[main]/Evpn_vxlan::L2vni/Evpn_vxlan::L2vni_resource[Configure l2vni]/Cisco_vxlan_vtep_vni[nve1 209001]/multicast_group: multicast_group changed '' to '225.4.0.1'
+Notice: /Stage[main]/Evpn_vxlan::L2vni/Evpn_vxlan::L2vni_resource[Configure l2vni]/Evpn_vxlan::Interface_svi[vlan1002]/Cisco_command_config[vlan1002]/command: command changed '' to 'interface vlan1002
+ipv6 address 4:1:0:1::1/64
+'
+Notice: /Stage[main]/Evpn_vxlan::L2vni/Evpn_vxlan::L2vni_resource[Configure l2vni]/Evpn_vxlan::Interface_svi[vlan1003]/Cisco_command_config[vlan1003]/command: command changed '' to 'interface vlan1003
+ipv6 address 4:2:0:1::1/64
+'
+Notice: /Stage[main]/Evpn_vxlan::L2vni/Evpn_vxlan::L2vni_resource[Configure l2vni]/Evpn_vxlan::Interface_svi[vlan1001]/Cisco_interface[vlan1001]/ensure: created
+Notice: /Stage[main]/Evpn_vxlan::L2vni/Evpn_vxlan::L2vni_resource[Configure l2vni]/Evpn_vxlan::Interface_svi[vlan1001]/Cisco_command_config[vlan1001]/command: command changed '' to 'interface vlan1001
+ipv6 address 4:4:0:1::1/64
+'
+Notice: Applied catalog in 606.12 seconds
+root@leaf_1#
+
