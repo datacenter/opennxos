@@ -129,14 +129,18 @@ Executing the puppet agent command (with no arguments) will start the puppet age
 1. Clone this repo inside the modules folder(/etc/puppetlabs/code/environments/production/modules/) on Puppet Master.
 2. Further steps assumes you have installed Puppet Enterprise on Master correctly.
 3. Copy the following folders found inside the repo you just cloned.
+
     ```
      $cp -rf <path_of_cloned_repo>/examples/hieradata/nodes/   /etc/puppetlabs/code/environments/production/hieradata/
      $cp <path_of_cloned_repo>/examples/site.pp   /etc/puppetlabs/code/environments/production/manifests/
     ```
+
 4. If you want to skip the above step (no 3.) and quickly test the working of this module, then you can use the data present in the module itself.This data can be located at <path_of_cloned_repo>/data/evpn_vxlan_node_data/<certname_of_any_switch_you_want_to_configure>.yaml
+
 	```
 		mv  <path_of_cloned_repo>/data/evpn_vxlan_node_data/spine_1.yaml	<path_of_cloned_repo>/data/evpn_vxlan_node_data/<certname_of_any_switch_you_want_to_configure>.yaml
 	```
+
 	Rename the spine_1.yaml to match with certname of the switch you wish to configure. 
    ###### Note: The above step (no 4.) is only meant for quick test and assumes the switch you wish to configure has puppet agent running and is signed by the Puppet master.
 
