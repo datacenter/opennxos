@@ -1,10 +1,10 @@
 # Overview
 Manifests for the VXLAN MP BGP EVPN configuration is strucuted to include a site manifest “site.pp”, a roles file “roles.pp” and profiles file “profile.pp”.  The roles.pp defines the spine and leaf roles of the switches used in this design, and profile.pp expands the profiles applied to the respective roles.  The figure below shows the different parameterized Puppet classes used in  building the profile manifest.
-![alt tag](https://github.com/datacenter/Puppet-VXLAN-CVD/blob/master/images/Profiles.jpg)
+![alt tag](https://github.com/datacenter/opennxos/blob/master/Puppet-NXOS-master/Puppet-VXLAN-CVD/images/Profiles.jpg)
 
 # Topology
 A data center network with VxLAN and VPC configuration using Nexus 9000 series switches utilizing VxLAN with BGP control plane is depicted in the below figure.
-![alt tag](https://github.com/datacenter/Puppet-VXLAN-CVD/blob/master/images/Topology.jpg)
+![alt tag](https://github.com/datacenter/opennxos/blob/master/Puppet-NXOS-master/Puppet-VXLAN-CVD/images/Topology.jpg)
 
 Leaf-1, Leaf-2 are configured as VTEP1 and VTEP2 respectively. Spine-1 and Spine-2 are configured to be route reflectors. This allows all leafs to form BGP neighbor relationship. VLAN 1001, VLAN 1002 and VLAN 1003 are associated with VNI 2001001 & VNI 2001002 respectively. 
 
@@ -126,14 +126,20 @@ Executing the puppet agent command (with no arguments) will start the puppet age
     puppet cert sign "this_node.mycompany.com"
     ```
 # Structuring for the manifests on the user’s server
-1. Clone this repo into any directory of your choice on Puppet Master.
+1. Clone this repo inside the modules folder(/etc/puppetlabs/code/environments/production/modules/) on Puppet Master.
 2. Further steps assumes you have installed Puppet Enterprise on Master correctly.
 3. Copy the following folders found inside the repo you just cloned.
     ```
-     $cp -rf <path_of_cloned_repo>/hieradata/nodes/   /etc/puppetlabs/code/environments/production/hieradata/
-     $cp <path_of_cloned_repo>/manifests/site.pp   /etc/puppetlabs/code/environments/production/manifests/
-     $cp -rf <path_of_cloned_repo>/modules/evpn_vxlan/   /etc/puppetlabs/code/environments/production/modules/
+     $cp -rf <path_of_cloned_repo>/examples/hieradata/nodes/   /etc/puppetlabs/code/environments/production/hieradata/
+     $cp <path_of_cloned_repo>/examples/site.pp   /etc/puppetlabs/code/environments/production/manifests/
     ```
+4. If you want to skip the above step (no 3.) and quickly test the working of this module, then you can use the data present in the module itself.This data can be located at <path_of_cloned_repo>/data/evpn_vxlan_node_data/<certname_of_any_switch_you_want_to_configure>.yaml
+	```
+		mv  <path_of_cloned_repo>/data/evpn_vxlan_node_data/spine_1.yaml	<path_of_cloned_repo>/data/evpn_vxlan_node_data/<certname_of_any_switch_you_want_to_configure>.yaml
+	```
+	Rename the spine_1.yaml to match with certname of the switch you wish to configure. 
+   ###### Note: The above step (no 4.) is only meant for quick test and assumes the switch you wish to configure has puppet agent running and is signed by the Puppet master.
+
 # Adding and extending a new node through Hiera
 When a new node/switch is added to the topology, following steps are to be followed:
 

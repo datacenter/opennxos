@@ -1,0 +1,525 @@
+
+Spine_1#
+Spine_1#
+Spine_1# show running-config
+
+!Command: show running-config
+!Time: Tue Jan  3 12:06:58 2017
+
+version 7.0(3)I5(1)
+power redundancy-mode combined force
+
+switchname Spine_1
+class-map type network-qos c-8q
+class-map type network-qos c-8q-nq
+policy-map type network-qos c-8q
+  class type network-qos c-8q-nq-default
+    mtu 1500
+policy-map type network-qos dpp-nwqos
+  class type network-qos c-8q-nq-default
+    mtu 1500
+vdc Spine_1 id 1
+  limit-resource vlan minimum 16 maximum 4094
+  limit-resource vrf minimum 2 maximum 4096
+  limit-resource port-channel minimum 0 maximum 511
+  limit-resource u4route-mem minimum 248 maximum 248
+  limit-resource u6route-mem minimum 96 maximum 96
+  limit-resource m4route-mem minimum 58 maximum 58
+  limit-resource m6route-mem minimum 8 maximum 8
+
+feature nxapi
+feature bash-shell
+feature scp-server
+cfs eth distribute
+nv overlay evpn
+feature ospf
+feature bgp
+feature pim
+feature interface-vlan
+feature vn-segment-vlan-based
+feature lacp
+feature vpc
+feature nv overlay
+
+no password strength-check
+username admin password 5 $5$9E7vyCIJ$b/yIOHi3w1lMB4J/ZD/1FTTSCAltXghH/YweFYldd72  role network-admin
+ip domain-lookup
+ip domain-name cisco.com
+ip domain-list cisco
+ip domain-list puppet
+ip name-server 172.31.219.77 64.102.6.247 173.36.131.10 173.37.87.157 72.163.47.11 171.70.168.183
+ip host puppet 172.31.219.77
+system default switchport
+interface breakout module 1 port 37-72 map 10g-4x
+system qos
+  service-policy type network-qos dpp-nwqos
+copp profile strict
+snmp-server user admin network-admin auth md5 0x39ed0b125e3597f05dc91054042e103a priv 0x39ed0b125e3597f05dc91054042e103a localizedkey
+rmon event 1 log trap public description FATAL(1) owner PMON@FATAL
+rmon event 2 log trap public description CRITICAL(2) owner PMON@CRITICAL
+rmon event 3 log trap public description ERROR(3) owner PMON@ERROR
+rmon event 4 log trap public description WARNING(4) owner PMON@WARNING
+rmon event 5 log trap public description INFORMATION(5) owner PMON@INFO
+ntp server 172.31.219.237 use-vrf management
+
+vlan 1
+ip pim rp-address 100.1.1.1 group-list 224.0.0.0/4
+ip pim rp-address 100.1.1.1 group-list 225.0.0.0/8
+ip pim bsr rp-candidate loopback1 group-list 225.0.0.0/8
+ip pim ssm range 232.0.0.0/8
+ip pim anycast-rp 100.1.1.1 10.1.1.1
+ip pim anycast-rp 100.1.1.1 20.1.1.1
+
+cdp timer 30
+vrf context management
+  ip domain-name cisco.com
+  ip name-server 64.102.6.247 173.36.131.10 173.37.87.157 72.163.47.11 172.31.219.77 171.70.168.183
+  ip route 0.0.0.0/0 10.23.248.1
+hardware access-list tcam region ing-racl 1024
+hardware access-list tcam region ing-l2-qos 0
+hardware access-list tcam region ing-l3-vlan-qos 256
+hardware access-list tcam region ing-l2-span-filter 0
+hardware access-list tcam region egr-racl 1024
+hardware access-list tcam region ing-ifacl 1024
+hardware qos ing-pg-no-min pgmin 252
+hardware profile multicast max-limit lpm-entries 0
+hardware qos dynamic-packet-prioritization max-num-pkts 20
+
+
+interface Vlan1
+
+interface Ethernet1/1
+  description connect to leaf_1
+  no switchport
+  ip address 192.168.1.42/24
+  ip router ospf 1 area 0.0.0.0
+  ip pim sparse-mode
+  no shutdown
+
+interface Ethernet1/2
+  description connect to leaf_2
+  no switchport
+  ip address 192.168.2.43/24
+  ip router ospf 1 area 0.0.0.0
+  ip pim sparse-mode
+  no shutdown
+
+interface Ethernet1/3
+  no switchport
+
+interface Ethernet1/4
+  no switchport
+
+interface Ethernet1/5
+
+interface Ethernet1/6
+
+interface Ethernet1/7
+
+interface Ethernet1/8
+
+interface Ethernet1/9
+
+interface Ethernet1/10
+  shutdown
+
+interface Ethernet1/11
+  description connect to Leaf_3
+  no switchport
+  ip address 192.168.5.11/24
+  ip router ospf 1 area 0.0.0.0
+  ip pim sparse-mode
+  no shutdown
+
+interface Ethernet1/12
+  shutdown
+
+interface Ethernet1/13
+  shutdown
+
+interface Ethernet1/14
+
+interface Ethernet1/15
+
+interface Ethernet1/16
+
+interface Ethernet1/17
+
+interface Ethernet1/18
+
+interface Ethernet1/19
+
+interface Ethernet1/20
+  no switchport
+
+interface Ethernet1/21
+
+interface Ethernet1/22
+
+interface Ethernet1/23
+
+interface Ethernet1/24
+
+interface Ethernet1/25
+
+interface Ethernet1/26
+
+interface Ethernet1/27
+
+interface Ethernet1/28
+
+interface Ethernet1/29
+
+interface Ethernet1/30
+
+interface Ethernet1/31
+
+interface Ethernet1/32
+
+interface Ethernet1/33
+  shutdown
+
+interface Ethernet1/34
+  shutdown
+
+interface Ethernet1/35
+  no switchport
+
+interface Ethernet1/36
+
+interface Ethernet1/37/1
+
+interface Ethernet1/37/2
+
+interface Ethernet1/37/3
+
+interface Ethernet1/37/4
+
+interface Ethernet1/38/1
+
+interface Ethernet1/38/2
+
+interface Ethernet1/38/3
+
+interface Ethernet1/38/4
+
+interface Ethernet1/39/1
+
+interface Ethernet1/39/2
+
+interface Ethernet1/39/3
+
+interface Ethernet1/39/4
+
+interface Ethernet1/40/1
+
+interface Ethernet1/40/2
+
+interface Ethernet1/40/3
+
+interface Ethernet1/40/4
+
+interface Ethernet1/41/1
+
+interface Ethernet1/41/2
+
+interface Ethernet1/41/3
+
+interface Ethernet1/41/4
+
+interface Ethernet1/42/1
+
+interface Ethernet1/42/2
+
+interface Ethernet1/42/3
+
+interface Ethernet1/42/4
+
+interface Ethernet1/43/1
+
+interface Ethernet1/43/2
+
+interface Ethernet1/43/3
+
+interface Ethernet1/43/4
+
+interface Ethernet1/44/1
+
+interface Ethernet1/44/2
+
+interface Ethernet1/44/3
+
+interface Ethernet1/44/4
+
+interface Ethernet1/45/1
+
+interface Ethernet1/45/2
+
+interface Ethernet1/45/3
+
+interface Ethernet1/45/4
+
+interface Ethernet1/46/1
+
+interface Ethernet1/46/2
+
+interface Ethernet1/46/3
+
+interface Ethernet1/46/4
+
+interface Ethernet1/47/1
+
+interface Ethernet1/47/2
+
+interface Ethernet1/47/3
+
+interface Ethernet1/47/4
+
+interface Ethernet1/48/1
+
+interface Ethernet1/48/2
+
+interface Ethernet1/48/3
+
+interface Ethernet1/48/4
+
+interface Ethernet1/49/1
+
+interface Ethernet1/49/2
+
+interface Ethernet1/49/3
+
+interface Ethernet1/49/4
+
+interface Ethernet1/50/1
+
+interface Ethernet1/50/2
+
+interface Ethernet1/50/3
+
+interface Ethernet1/50/4
+
+interface Ethernet1/51/1
+
+interface Ethernet1/51/2
+
+interface Ethernet1/51/3
+
+interface Ethernet1/51/4
+
+interface Ethernet1/52/1
+
+interface Ethernet1/52/2
+
+interface Ethernet1/52/3
+
+interface Ethernet1/52/4
+
+interface Ethernet1/53/1
+
+interface Ethernet1/53/2
+
+interface Ethernet1/53/3
+
+interface Ethernet1/53/4
+
+interface Ethernet1/54/1
+
+interface Ethernet1/54/2
+
+interface Ethernet1/54/3
+
+interface Ethernet1/54/4
+
+interface Ethernet1/55/1
+
+interface Ethernet1/55/2
+
+interface Ethernet1/55/3
+
+interface Ethernet1/55/4
+
+interface Ethernet1/56/1
+
+interface Ethernet1/56/2
+
+interface Ethernet1/56/3
+
+interface Ethernet1/56/4
+
+interface Ethernet1/57/1
+
+interface Ethernet1/57/2
+
+interface Ethernet1/57/3
+
+interface Ethernet1/57/4
+
+interface Ethernet1/58/1
+
+interface Ethernet1/58/2
+
+interface Ethernet1/58/3
+
+interface Ethernet1/58/4
+
+interface Ethernet1/59/1
+
+interface Ethernet1/59/2
+
+interface Ethernet1/59/3
+
+interface Ethernet1/59/4
+
+interface Ethernet1/60/1
+
+interface Ethernet1/60/2
+
+interface Ethernet1/60/3
+
+interface Ethernet1/60/4
+
+interface Ethernet1/61/1
+
+interface Ethernet1/61/2
+
+interface Ethernet1/61/3
+
+interface Ethernet1/61/4
+
+interface Ethernet1/62/1
+
+interface Ethernet1/62/2
+
+interface Ethernet1/62/3
+
+interface Ethernet1/62/4
+
+interface Ethernet1/63/1
+
+interface Ethernet1/63/2
+
+interface Ethernet1/63/3
+
+interface Ethernet1/63/4
+
+interface Ethernet1/64/1
+
+interface Ethernet1/64/2
+
+interface Ethernet1/64/3
+
+interface Ethernet1/64/4
+
+interface Ethernet1/65/1
+
+interface Ethernet1/65/2
+
+interface Ethernet1/65/3
+
+interface Ethernet1/65/4
+
+interface Ethernet1/66/1
+
+interface Ethernet1/66/2
+
+interface Ethernet1/66/3
+
+interface Ethernet1/66/4
+
+interface Ethernet1/67/1
+
+interface Ethernet1/67/2
+
+interface Ethernet1/67/3
+
+interface Ethernet1/67/4
+
+interface Ethernet1/68/1
+
+interface Ethernet1/68/2
+
+interface Ethernet1/68/3
+
+interface Ethernet1/68/4
+
+interface Ethernet1/69/1
+
+interface Ethernet1/69/2
+
+interface Ethernet1/69/3
+
+interface Ethernet1/69/4
+
+interface Ethernet1/70/1
+
+interface Ethernet1/70/2
+
+interface Ethernet1/70/3
+
+interface Ethernet1/70/4
+
+interface Ethernet1/71/1
+
+interface Ethernet1/71/2
+
+interface Ethernet1/71/3
+
+interface Ethernet1/71/4
+
+interface Ethernet1/72/1
+
+interface Ethernet1/72/2
+
+interface Ethernet1/72/3
+
+interface Ethernet1/72/4
+
+interface mgmt0
+  vrf member management
+  ip address 10.23.248.88/24
+
+interface loopback0
+  description for vtep and bgp
+  ip address 10.1.1.1/32
+  ip router ospf 1 area 0.0.0.0
+  ip pim sparse-mode
+
+interface loopback1
+  description for vtep and bgp
+  ip address 100.1.1.1/32
+  ip router ospf 1 area 0.0.0.0
+  ip pim sparse-mode
+line console
+line vty
+boot nxos bootflash:/nxos.7.0.3.I5.0.236.bin
+router ospf 1
+router bgp 65535
+  router-id 10.1.1.1
+  neighbor 30.1.1.1
+    remote-as 65535
+    update-source loopback0
+    address-family l2vpn evpn
+      send-community
+      send-community extended
+      route-reflector-client
+  neighbor 40.1.1.1
+    remote-as 65535
+    update-source loopback0
+    address-family l2vpn evpn
+      send-community
+      send-community extended
+      route-reflector-client
+  neighbor 50.1.1.1
+    remote-as 65535
+    update-source loopback0
+    address-family l2vpn evpn
+      send-community
+      send-community extended
+      route-reflector-client
+no system default switchport shutdown
+virtual-service ndb
+  activate
+
+
+Spine_1#

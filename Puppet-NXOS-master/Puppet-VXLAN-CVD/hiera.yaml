@@ -1,0 +1,10 @@
+---
+version: 4
+datadir: data
+hierarchy:
+  - name: "Nodes"
+    backend: yaml
+    path: "evpn_vxlan_node_data/%{trusted.certname}"
+
+  - name: "common"
+    backend: yaml
