@@ -131,17 +131,17 @@ Executing the puppet agent command (with no arguments) will start the puppet age
 3. Copy the following folders found inside the repo you just cloned.
 
     ```
-     $cp -rf <path_of_cloned_repo>/examples/hieradata/nodes/   /etc/puppetlabs/code/environments/production/hieradata/
+     $cp -rf <path_of_cloned_repo>/examples/hieradata/ref/*   /etc/puppetlabs/code/environments/production/hieradata/nodes/
      $cp <path_of_cloned_repo>/examples/site.pp   /etc/puppetlabs/code/environments/production/manifests/
     ```
 
 4. If you want to skip the above step and quickly test the working of this module, then you can use the data present in the module itself.This data can be located at <path_of_cloned_repo>/data/evpn_vxlan_node_data/<certname_of_any_switch_you_want_to_configure>.yaml
 
 	```
-		mv  <path_of_cloned_repo>/data/evpn_vxlan_node_data/spine_1.yaml	<path_of_cloned_repo>/data/evpn_vxlan_node_data/<certname_of_any_switch_you_want_to_configure>.yaml
+		mv  <path_of_cloned_repo>/data/evpn_vxlan_node_data/<leaf_or_spine_switch>.yaml	<path_of_cloned_repo>/data/evpn_vxlan_node_data/<certname_of_any_switch_you_want_to_configure>.yaml
 	```
 
-	Rename the spine_1.yaml to match with certname of the switch you wish to configure. 
+	Rename the <leaf_or_spine_switch>.yaml to match with certname of the switch you wish to configure. 
    ###### Note: The above step is only meant for quick test and assumes the switch you wish to configure has puppet agent running and is signed by the Puppet master.
 
 # Adding and extending a new node through Hiera

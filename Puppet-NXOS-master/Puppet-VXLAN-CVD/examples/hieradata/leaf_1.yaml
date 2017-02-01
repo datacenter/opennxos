@@ -1,0 +1,52 @@
+---
+#underlay interfaces configuration data
+evpn_vxlan::underlay_interface::interface_list:
+  - interface_name: "loopback0"
+    description: "for vtep and bgp"
+    ipv4_address: 30.1.1.1
+    ipv4_netmask_length: 32
+    switchport_mode: 'disabled'
+    ipv4_pim_sparse_mode: true
+    ipv4_address_secondary: 101.1.1.1
+    ipv4_netmask_length_secondary: 24
+
+  - interface_name: "Ethernet1/1"
+    description: "connect to spine_1"
+    ipv4_address: 192.168.1.22
+    ipv4_netmask_length: 24
+    switchport_mode: 'disabled'
+    ipv4_pim_sparse_mode: true
+
+  - interface_name: "Ethernet1/2"
+    description: "connect to spine_2"
+    ipv4_address: 192.168.3.23
+    ipv4_netmask_length: 24
+    switchport_mode: 'disabled'
+    ipv4_pim_sparse_mode: true
+
+#bgp configuartion data
+evpn_vxlan::bgp::leaf::as_number: "65535"
+evpn_vxlan::bgp::leaf::router_id: "30.1.1.1"
+evpn_vxlan::bgp::leaf::set_as_spine_neighbor:
+  neighbor_address: "30.1.1.1"
+  update_source: "loopback0"
+  address_family:
+    afi: "l2vpn"
+    safi: "evpn"
+  send_community: "both"
+  vrf: "default"
+  route_reflector_client: true
+
+#vpc domain configuration data
+evpn_vxlan::vpc_domain::vpc_domain_id: 10
+evpn_vxlan::vpc_domain::peer_gateway: true
+evpn_vxlan::vpc_domain::peer_keepalive_dest: "172.23.145.218"
+evpn_vxlan::vpc_domain::peer_keepalive_src: "172.23.145.217"
+evpn_vxlan::vpc_domain::peer_keepalive_vrf: "pkal"
+
+#peer-keepalive link configuration data
+evpn_vxlan::peer_keepalive::interface_list:
+  - interface_name: "Ethernet1/35"
+    description: "description to peer keepalive link"
+    ipv4_address: "172.23.145.217"
+    ipv4_netmask_length: "24"
