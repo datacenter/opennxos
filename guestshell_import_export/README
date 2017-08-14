@@ -1,0 +1,6 @@
+Instructions to run YAML schema validator:
+python validator.py schema.json  gs_import.yaml
+Tested on Python 3.x and Python 2.7.x
+
+Use "-h" for help
+python validator.py -h
