@@ -3,7 +3,7 @@ import-schema-version: "1.0"
 info:
   name: "GuestShell"
   version: "2.3(0.0)"
-  description: "Exported GuestShell: 20170719T200450Z"
+  description: "Exported GuestShell: 12345"
 app:
   apptype: "lxc"
   cpuarch: "x86_64"
