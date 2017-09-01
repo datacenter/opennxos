@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "Guest Shell import schema",
-  "description": "Schema for Guest Shell import descriptor file - ver 1.0",
+  "description": "Schema for Guest Shell replication descriptor file - ver 1.0",
   "copyright": "2017 by Cisco systems, Inc. All rights reserved.",
   "id": "",
   "type": "object",
