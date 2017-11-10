@@ -14,6 +14,6 @@ Open NX-OS supports 4 important use cases:
 
 ## Additional Resources
 
-* Website: [Cisco Open NX-OS](https://opennxos.cisco.com/)
+* Website: [Cisco Open NX-OS](https://developer.cisco.com/site/nx-os/)
 
 * Book (PDF): [Open NX-OS - Programmability & Automation](http://www.cisco.com/c/dam/en/us/td/docs/switches/datacenter/nexus9000/sw/open_nxos/programmability/guide/Programmability_Open_NX-OS.pdf)
