@@ -1,0 +1,27 @@
+  <tm-items>
+    <adminSt>enabled</adminSt>
+    <sensor-items>
+      <SensorGroup-list>
+        <id>1</id>
+        <path-items>
+{% for interface in interfaces %}
+          <SensorPath-list>
+            <path>sys/intf/phys-[{{interface}}]/dbgIfIn</path>
+            <depth>0</depth>
+            <filterCondition></filterCondition>
+          </SensorPath-list>
+          <SensorPath-list>
+            <path>sys/intf/phys-[{{interface}}]/dbgIfOut</path>
+            <depth>0</depth>
+            <filterCondition></filterCondition>
+          </SensorPath-list>
+          <SensorPath-list>
+            <path>sys/intf/phys-[{{interface}}]/dbgEtherStats</path>
+            <depth>0</depth>
+            <filterCondition></filterCondition>
+          </SensorPath-list>
+{% endfor %}
+        </path-items>
+      </SensorGroup-list>
+    </sensor-items>
+  </tm-items>

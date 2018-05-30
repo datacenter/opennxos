@@ -1,0 +1,10 @@
+---
+
+interfaces:
+  -  eth1/1
+  -  eth1/2
+
+
+bgp_neighbors:
+  - 1.1.1.1
+  - 2.2.2.2

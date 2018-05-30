@@ -1,0 +1,19 @@
+  <tm-items>
+    <adminSt>enabled</adminSt>
+    <sensor-items>
+      <SensorGroup-list>
+        <id>1</id>
+        <path-items>
+{% for neighbor in bgp_neighbors %}
+          <SensorPath-list>
+            <path>sys/bgp/inst/dom-default/peer-[{{neighbor}}]/ent-[{{neighbor}}]</path>
+            <depth>0</depth>
+            <filterCondition></filterCondition>
+          </SensorPath-list>
+{% endfor %}
+        </path-items>
+      </SensorGroup-list>
+    </sensor-items>
+  </tm-items>
+
+
