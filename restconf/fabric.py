@@ -6,7 +6,7 @@ import yaml
 import os
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
-auth = base64.b64encode('admin:Insieme123')
+auth = base64.b64encode('admin:password')
 headers = {
     'authorization': 'Basic %s' % auth,
     'content-type': "application/yang.data+xml"
