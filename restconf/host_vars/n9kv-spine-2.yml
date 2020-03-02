@@ -1,12 +1,20 @@
 ---
 
-interfaces:
-  -  eth1/1
-  -  eth1/2
-
-
+asn: 65001
+router_id: 2.2.2.2
+address_families:
+  - af: ipv4-ucast
+  - af: l2vpn-evpn
 bgp_neighbors:
-  - 3.3.3.3
-  - 4.4.4.4
-  - 5.5.5.5
-  - 6.6.6.6
+  - neighbor: 3.3.3.3
+    asn: 65001
+    source_interface: lo0
+    address_families:
+      - afi: "ipv4-ucast"
+      - afi: "l2vpn-evpn"
+  - neighbor: 4.4.4.4
+    asn: 65001
+    source_interface: lo0
+    address_families:
+      - afi: "ipv4-ucast"
+      - afi: "l2vpn-evpn"

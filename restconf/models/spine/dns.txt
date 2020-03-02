@@ -1,0 +1,24 @@
+  <dns-items>
+    <prof-items>
+      <Prof-list>
+        <name>default</name>
+        <vrf-items>
+          <Vrf-list>
+{% for vrfs in name_servers %}
+            <name>{{ vrfs.vrf }}</name>
+            <prov-items>
+{% for servers in vrfs.servers %}
+              <Provider-list>
+                <addr>{{ servers.server }}</addr>
+              </Provider-list>
+{% endfor %}
+            </prov-items>
+{% endfor %}
+          </Vrf-list>
+        </vrf-items>
+        <dom-items>
+        <name>{{ domain_name }}</name>
+        </dom-items>
+      </Prof-list>
+    </prof-items>
+  </dns-items>

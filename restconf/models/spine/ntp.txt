@@ -1,0 +1,23 @@
+  <time-items>
+    <auth-items>
+{% for item in ntp_keys %}
+      <NtpAuth-list>
+        <id>{{ item.key }}</id>
+        <isEncrypt>false</isEncrypt>
+        <key>{{ item.password }}</key>
+      </NtpAuth-list>
+{% endfor %}
+    </auth-items>
+    <prov-items>
+{% for item in ntp_servers %}
+{% for server in item.servers %}
+      <NtpProvider-list>
+        <name>{{ server.ip }}</name>
+        <keyId>{{ server.key }}</keyId>
+        <provT>server</provT>
+        <vrf>{{ item.vrf }}</vrf>
+      </NtpProvider-list>
+{% endfor %}
+{% endfor %}
+    </prov-items>
+  </time-items>

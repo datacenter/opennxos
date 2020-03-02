@@ -1,0 +1,29 @@
+<ospf-items>
+    <inst-items>
+      <Inst-list>
+        <name>{{ ospf_process }}</name>
+        <dom-items>
+          <Dom-list>
+            <name>default</name>
+            <rtrId>{{ ospf_router_id }}</rtrId>
+            <if-items>
+{% for item in ospf_interfaces %}
+              <If-list>
+                <id>{{ item.interface }}</id>
+                <advertiseSecondaries>true</advertiseSecondaries>
+                <area>{{ item.area }}</area>
+              </If-list>
+{% endfor %}              
+            </if-items>
+          </Dom-list>
+        </dom-items>
+      </Inst-list>
+    </inst-items>
+  </ospf-items>
+  <intf-items>
+    <lb-items>
+      <LbRtdIf-list>
+        <id>lo0</id>
+      </LbRtdIf-list>
+    </lb-items>
+  </intf-items>

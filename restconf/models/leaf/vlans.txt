@@ -1,0 +1,11 @@
+  <bd-items>
+    <bd-items>
+{% for vlan in vlans %}
+      <BD-list>
+        <fabEncap>vlan-{{ vlan.id }}</fabEncap>
+        <name>{{ vlan.name }}</name>
+        <pcTag>1</pcTag>
+      </BD-list>
+{% endfor %}
+    </bd-items>
+  </bd-items>

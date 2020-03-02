@@ -1,10 +1,102 @@
 ---
 
-interfaces:
-  -  eth1/1
-  -  eth1/2
+features:
+  - feature: nxapi
+    state: enabled
+  - feature: bashshell
+    state: enabled
+  - feature: scpserver
+    state: enabled
+  - feature: tacacsplus
+    state: enabled
+  - feature: ospf
+    state: enabled
+  - feature: bgp
+    state: enabled
+  - feature: ifvlan
+    state: enabled
+  - feature: vnsegment
+    state: enabled
+  - feature: lacp
+    state: enabled
+  - feature: lldp
+    state: enabled
+  - feature: bfd
+    state: enabled
+  - feature: nvo
+    state: enabled
+  - feature: evpn
+    state: enabled
 
 
+phy_interfaces:
+  - interface: eth1/1
+    ip_address: 10.10.10.3/31
+  - interface: eth1/2
+    ip_address: 10.10.10.7/31
+virt_interfaces:
+  - interface: lo0
+    ip_address: 4.4.4.4/32
+
+ospf_process: 1
+ospf_area: 0.0.0.0
+ospf_router_id: 4.4.4.4
+ospf_interfaces:
+  - interface: eth1/1
+    area: 0.0.0.0
+  - interface: eth1/2
+    area: 0.0.0.0
+  - interface: lo0
+    area: 0.0.0.0
+
+asn: 65001
+router_id: 4.4.4.4
+address_families:
+  - af: ipv4-ucast 
+  - af: l2vpn-evpn
 bgp_neighbors:
-  - 1.1.1.1
-  - 2.2.2.2
+  - neighbor: 1.1.1.1
+    asn: 65001
+    source_interface: lo0
+    address_families:
+      - afi: ipv4-ucast
+      - afi: l2vpn-evpn
+  - neighbor: 2.2.2.2
+    asn: 65001
+    source_interface: lo0
+    address_families:
+      - afi: ipv4-ucast
+      - afi: l2vpn-evpn
+
+domain_name: mydomain.com
+name_servers: 
+  - vrf: management
+    servers:
+    - server: 10.20.30.50
+    - server: 10.50.60.80
+
+ntp_keys:
+  - key: 10
+    password: favoriteKey
+  - key: 11
+    password: 2ndfavoriteKey
+
+ntp_servers:
+  - vrf: management
+    servers:
+      - ip: 1.2.3.4
+        key: 10
+      - ip: 5.6.7.8
+        key: 11
+
+
+vlans:
+  - id: 40
+    name: sql_servers
+  - id: 50
+    name: app_servers
+  - id: 60
+    name: xyz_servers
+
+nve: nve1
+

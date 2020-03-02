@@ -1,0 +1,7 @@
+  <fm-items>
+{% for item in features %}
+    <{{ item.feature }}-items>
+      <adminSt>{{ item.state }}</adminSt>
+    </{{ item.feature }}-items>
+{% endfor %}
+  </fm-items>

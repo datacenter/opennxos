@@ -1,0 +1,50 @@
+  <ipv4-items>
+    <inst-items>
+      <dom-items>
+        <Dom-list>
+          <name>default</name>
+          <if-items>
+{% for item in phy_interfaces %}
+            <If-list>
+              <id>{{ item.interface }}</id>
+              <addr-items>
+                <Addr-list>
+                  <addr>{{ item.ip_address }}</addr>
+                </Addr-list>
+              </addr-items>
+            </If-list>
+{% endfor %}
+{% for item in virt_interfaces %}
+            <If-list>
+              <id>{{ item.interface }}</id>
+              <addr-items>
+                <Addr-list>
+                  <addr>{{ item.ip_address }}</addr>
+                </Addr-list>
+              </addr-items>
+            </If-list>
+{% endfor %}
+          </if-items>
+        </Dom-list>
+      </dom-items>
+    </inst-items>
+  </ipv4-items>
+  <intf-items>
+    <lb-items>
+{% for item in virt_interfaces %}
+      <LbRtdIf-list>
+        <id>{{ item.interface }}</id>
+      </LbRtdIf-list>
+    </lb-items>
+{% endfor %}
+    <phys-items>
+{% for item in phy_interfaces %}
+      <PhysIf-list>
+        <id>{{ item.interface }}</id>
+        <adminSt>up</adminSt>
+        <layer>Layer3</layer>
+        <userCfgdFlags>admin_layer,admin_state</userCfgdFlags>
+      </PhysIf-list>
+{% endfor %}      
+    </phys-items>
+  </intf-items>
