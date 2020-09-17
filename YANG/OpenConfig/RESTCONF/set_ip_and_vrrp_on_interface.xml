@@ -1,0 +1,41 @@
+<rpc message-id="101" xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <edit-config>
+    <target>
+      <running/>
+    </target>
+    <config xmlns:xc="urn:ietf:params:xml:ns:netconf:base:1.0">
+      <interfaces xmlns="http://openconfig.net/yang/interfaces" xmlns:oc-ip="http://openconfig.net/yang/interfaces/ip">
+        <interface>
+          <name>eth1/41</name>
+          <config>
+            <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          </config>
+          <subinterfaces>
+            <subinterface>
+              <index>0</index>
+              <oc-ip:ipv4>
+                <oc-ip:addresses>
+                  <oc-ip:address>
+                    <oc-ip:ip>10.10.10.10</oc-ip:ip>
+                    <oc-ip:config>
+                      <oc-ip:ip>10.10.10.10</oc-ip:ip>
+                      <oc-ip:prefix-length>24</oc-ip:prefix-length>
+                    </oc-ip:config>
+                    <oc-ip:vrrp>
+                      <oc-ip:vrrp-group>
+                        <oc-ip:virtual-router-id xc:operation="create">25</oc-ip:virtual-router-id>
+                        <oc-ip:config>
+                          <oc-ip:virtual-router-id>25</oc-ip:virtual-router-id>
+                        </oc-ip:config>
+                      </oc-ip:vrrp-group>
+                    </oc-ip:vrrp>
+                  </oc-ip:address>
+                </oc-ip:addresses>
+              </oc-ip:ipv4>
+            </subinterface>
+          </subinterfaces>
+        </interface>
+      </interfaces>
+    </config>
+  </edit-config>
+</rpc>

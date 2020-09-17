@@ -1,0 +1,29 @@
+$ curl -u admin:cisco -X GET 'http://93180-2/restconf/data/openconfig-interfaces:interfaces/interface=eth1%2f41?content=config'
+
+$ cat eth1-41_ip.xml
+<interface>
+      <name>eth1/41</name>
+      <config>
+            <description>POST example two description</description>
+            <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+      </config>
+      <subinterfaces>
+            <subinterface>
+                  <index>0</index>
+                  <oc-ip:ipv4>
+                        <oc-ip:addresses>
+                              <oc-ip:address>
+                                    <oc-ip:ip>10.43.43.43</oc-ip:ip>
+                                    <oc-ip:config>
+                                          <oc-ip:ip>10.43.43.43</oc-ip:ip>
+                                          <oc-ip:prefix-length>24</oc-ip:prefix-length>
+                                    </oc-ip:config>
+                              </oc-ip:address>
+                        </oc-ip:addresses>
+                  </oc-ip:ipv4>
+            </subinterface>
+      </subinterfaces>
+</interface>
+$
+
+$ curl -u admin:cisco -H "Content-Type: application/yang.data+xml" -X POST -d @eth1-41_ip.xml 'http://93180-2/restconf/data/openconfig-interfaces:interfaces'
